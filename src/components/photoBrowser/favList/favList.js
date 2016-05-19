@@ -3,7 +3,7 @@ function FavListController($scope) {
 
     ctrl.removeFav = (index) =>{
         ctrl.onRemove({index:index});
-    }
+    };
 
 
 }

@@ -61,7 +61,7 @@ function PhotoBrowserController($scope, $http, $q) {
             }, function errorCallback(response) {
                 console.log(response);
             });
-        })
+        });
     };
 
     ctrl.searchPhotos = (page, text) =>{
@@ -77,7 +77,7 @@ function PhotoBrowserController($scope, $http, $q) {
                 console.log(response);
             });
 
-        })
+        });
     };
     ctrl.changePage = (page)=>{
         ctrl.searchPhotos(page, ctrl.search);
@@ -103,7 +103,7 @@ function PhotoBrowserController($scope, $http, $q) {
     ctrl.removeFromFav = (index)=>{
         ctrl.favList.splice(index, 1);
         localStorage.setItem('favList', JSON.stringify(ctrl.favList));
-    }
+    };
 
 
 

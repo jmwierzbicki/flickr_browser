@@ -12,7 +12,7 @@ var ngAnnotate = require('gulp-ng-annotate');
 
 gulp.task('lint', function() {
     return gulp.src(['src/**/*.js', '!src/lib/*.js'])
-        .pipe(jshint())
+        .pipe(jshint([{esversion: 6}]))
         .pipe(jshint.reporter('default'));
 });
 
@@ -58,4 +58,4 @@ gulp.task('connect', function () {
     })
 });
 
-gulp.task('default', ['lint', 'scripts', 'connect','watch']);
+gulp.task('default', ['scripts', 'connect','watch']);
