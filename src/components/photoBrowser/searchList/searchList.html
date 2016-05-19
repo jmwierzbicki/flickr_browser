@@ -1,0 +1,14 @@
+<span ng-show="$ctrl.searchResult.total >= 0">liczba znalezionych obrazków:</span> {{$ctrl.searchResult.total}}
+<br>
+<div style="text-align: center;" ng-show="$ctrl.searchResult.pages > 1">
+    <span ng-show="$ctrl.searchResult.page > 1" class="glyphicon glyphicon-menu-left" ng-click="$ctrl.changePage($ctrl.searchResult.page-1)"> </span>
+    page: {{$ctrl.searchResult.page}}
+    <span  ng-show="$ctrl.searchResult.page < $ctrl.searchResult.pages" class="glyphicon glyphicon-menu-right" ng-click="$ctrl.changePage($ctrl.searchResult.page+1)"> </span>
+</div>
+
+
+<div>
+    <section id="photos">
+        <img ng-repeat="image in $ctrl.searchResult.photo" ng-click="$ctrl.addFav(image)" src="images/Placeholder.png" ng-src="https://farm{{image.farm}}.staticflickr.com/{{image.server}}/{{image.id}}_{{image.secret}}_m.jpg" >
+    </section>
+   </diV>
