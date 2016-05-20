@@ -37,6 +37,9 @@ function SearchListController($scope, $window) {
 
     ctrl.changePage = (page) => {
         window.scrollTo(0,0);
+        if(page > ctrl.searchResult.page){
+            ctrl.searchResult = ctrl.searchResultCached;
+        }
         ctrl.onPage({page:page});
     };
 
