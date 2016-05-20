@@ -14,5 +14,11 @@
         </div>
     </section>
 
+<div style="text-align: center;" ng-show="$ctrl.searchResult.pages > 1">
+    <span ng-show="$ctrl.searchResult.page > 1" class="glyphicon glyphicon-menu-left" ng-click="$ctrl.changePage($ctrl.searchResult.page-1)"> </span>
+    page: {{$ctrl.searchResult.page}}
+    <span  ng-show="$ctrl.searchResult.page < $ctrl.searchResult.pages" class="glyphicon glyphicon-menu-right" ng-click="$ctrl.changePage($ctrl.searchResult.page+1)"> </span>
+</div>
+
 <div ng-repeat="image in $ctrl.searchResultCached.photo" style="background-image:url('https://farm{{image.farm}}.staticflickr.com/{{image.server}}/{{image.id}}_{{image.secret}}_m.jpg')"></div>
 

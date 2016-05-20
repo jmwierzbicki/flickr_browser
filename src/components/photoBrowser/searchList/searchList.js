@@ -36,6 +36,7 @@ function SearchListController($scope, $window) {
     ctrl.searchResult={};
 
     ctrl.changePage = (page) => {
+        window.scrollTo(0,0);
         ctrl.onPage({page:page});
     };
 
