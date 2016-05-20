@@ -7,8 +7,12 @@
 </div>
 
 
-<div>
-    <section id="photos">
-        <img ng-repeat="image in $ctrl.searchResult.photo" ng-click="$ctrl.addFav(image)" src="images/Placeholder.png" ng-src="https://farm{{image.farm}}.staticflickr.com/{{image.server}}/{{image.id}}_{{image.secret}}_m.jpg" >
+    <section class="row">
+        <div  ng-repeat="column in $ctrl.getColumns()" class="col-xs-{{12 / $ctrl.getColumns().length}} img-column">
+            <img style="width:100%;" ng-repeat="image in $ctrl.getSearchDivided(column, $ctrl.getColumns().length)" ng-click="$ctrl.addFav(image)" src="images/Placeholder.png" ng-src="https://farm{{image.farm}}.staticflickr.com/{{image.server}}/{{image.id}}_{{image.secret}}_m.jpg" >
+
+        </div>
     </section>
-   </diV>
+
+<div ng-repeat="image in $ctrl.searchResultCached.photo" style="background-image:url('https://farm{{image.farm}}.staticflickr.com/{{image.server}}/{{image.id}}_{{image.secret}}_m.jpg')"></div>
+

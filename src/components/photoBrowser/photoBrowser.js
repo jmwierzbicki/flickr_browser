@@ -1,7 +1,8 @@
 function PhotoBrowserController($scope, $http, $q) {
     var ctrl = this;
     ctrl.search = "";
-    ctrl.searchResults = {};
+    ctrl.searchResult = {};
+    ctrl.searchResultCached = {};
     ctrl.favList = [];
     var savedData = JSON.parse(localStorage.getItem('favList'));
    if (savedData instanceof Array){
@@ -14,6 +15,7 @@ function PhotoBrowserController($scope, $http, $q) {
         'method': "flickr.photos.search",
         'text': "",
         'page': 1,
+        'per_page':50,
         'format': "json",
         'nojsoncallback':1
 
@@ -64,18 +66,29 @@ function PhotoBrowserController($scope, $http, $q) {
         });
     };
 
-    ctrl.searchPhotos = (page, text) =>{
+    ctrl.searchPhotos = (page, text, cache = false) =>{
         getSignature(page,text).then( (signature)=>{
 
             $http({
                 method: 'GET',
                 url: getRequestUrl(page,text)+"api_sig="+signature
             }).then(function successCallback(response) {
-                ctrl.searchResult = response.data.photos;
+                console.log(response.data);
+                if(!cache){
+                    ctrl.searchResult = response.data.photos;
+                    if(response.data.photos.page < response.data.photos.pages)
+                    ctrl.searchPhotos(page+1,text,true)
+                }else{
+                    ctrl.searchResultCached = response.data.photos;
+                }
+
                 //console.log(ctrl.searchResult);
             }, function errorCallback(response) {
                 console.log(response);
             });
+
+
+
 
         });
     };

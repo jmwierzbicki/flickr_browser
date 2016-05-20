@@ -1,7 +1,7 @@
 <div>
     <input class="form-control" placeholder="type text to search..." ng-model-options="{debounce: { 'default': 500, 'blur': 0 }}" ng-model="$ctrl.search" ng-change="$ctrl.searchPhotos(1, $ctrl.search)">
     <div class="row" style="padding-top:20px;">
-        <div class="col-sm-2"><fav-list fav-list="$ctrl.favList" on-remove="$ctrl.removeFromFav(index)"></fav-list></div>
-        <div class="col-sm-9"><search-list search-result="$ctrl.searchResult" on-add="$ctrl.addToFav(image)" on-page="$ctrl.changePage(page)"></search-list></div>
+        <div class="col-xs-2"><fav-list fav-list="$ctrl.favList" on-remove="$ctrl.removeFromFav(index)"></fav-list></div>
+        <div class="col-xs-9"><search-list watch-resize search-result="$ctrl.searchResult" search-result-cached="$ctrl.searchResultCached" on-add="$ctrl.addToFav(image)" on-page="$ctrl.changePage(page)"></search-list></div>
     </div>
 </div>
